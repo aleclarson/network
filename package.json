@@ -1,0 +1,9 @@
+{
+  "name": "network",
+  "version": "1.0.0",
+  "main": "./js/src/Network",
+  "dependencies": {
+    "event": "aleclarson/event#1.0.0",
+    "factory": "aleclarson/factory#1.0.0"
+  }
+}
