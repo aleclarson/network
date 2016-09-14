@@ -1,9 +1,23 @@
 {
   "name": "network",
-  "version": "1.0.0",
-  "main": "./js/src/Network",
+  "version": "2.0.0",
+  "main": "js/Network",
+  "plugins": [
+    "lotus-coffee"
+  ],
+  "scripts": {
+    "build": "coffee -cb -o js src",
+    "postinstall": "postinstall-build js 'npm run build'"
+  },
   "dependencies": {
-    "event": "aleclarson/event#1.0.0",
-    "factory": "aleclarson/factory#1.0.0"
-  }
+    "Event": "aleclarson/Event#2.0.1",
+    "Type": "aleclarson/Type#1.1.0",
+    "postinstall-build": "0.2.x"
+  },
+  "devDependencies": {
+    "coffee-script": "1.9.x"
+  },
+  "implicitDependencies": [
+    "NetInfo"
+  ]
 }

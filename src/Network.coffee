@@ -1,30 +1,34 @@
 
 NetInfo = require "NetInfo"
-Factory = require "factory"
-Event = require "event"
+Event = require "Event"
+Type = require "Type"
 
-module.exports = Factory "Network",
+type = Type "Network"
 
-  singleton: yes
+type.defineFrozenValues
 
-  initFrozenValues: ->
+  didConnect: -> Event()
 
-    didConnect: Event()
+  didDisconnect: -> Event()
 
-    didDisconnect: Event()
+type.defineReactiveValues
 
-  initReactiveValues: ->
+  isConnected: no
 
-    isConnected: no
+type.initInstance ->
 
-  init: ->
-    NetInfo.isConnected.fetch().done (isConnected) =>
-      @_setConnected isConnected
-    NetInfo.isConnected.addEventListener "change", (isConnected) =>
-      @_setConnected isConnected
+  NetInfo.isConnected.fetch().done (isConnected) =>
+    @_setConnected isConnected
+
+  NetInfo.isConnected.addEventListener "change", (isConnected) =>
+    @_setConnected isConnected
+
+type.defineMethods
 
   _setConnected: (isConnected) ->
     return if isConnected is @isConnected
     @isConnected = isConnected
     if isConnected then @didDisconnect.emit()
     else @didConnect.emit()
+
+module.exports = type.construct()

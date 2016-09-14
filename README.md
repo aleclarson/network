@@ -1,5 +1,5 @@
 
-# network v1.0.0 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
+# network 2.0.0 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 
 Simple internet connection detection for [React Native](http://github.com/facebook/react-native).
 
